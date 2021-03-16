@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import "animate.css";
+
 export default {
     name: 'App',
     mounted() {
@@ -31,7 +33,6 @@ p {
     font-family: $system-font-family;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: $white;
 }
 
@@ -46,5 +47,103 @@ p {
             color: #42b983;
         }
     }
+}
+
+h4 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 34px;
+    text-align: center;
+    color: #ffffff;
+}
+
+input {
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    height: 60px;
+    width: 100%;
+
+    font-size: 20px;
+    line-height: 24px;
+    padding-left: 20px;
+}
+
+button {
+    background: #56ccf2;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    border: none;
+
+    height: 60px;
+    width: 100%;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+}
+
+a {
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* THEME */
+.light-background {
+    background-color: $light-gray;
+}
+
+.light-text {
+    color: $white;
+}
+
+.light-field {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: $white;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    &:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+.dark-background {
+    background-color: $dark-blue;
+}
+
+.dark-text {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.dark-field {
+    background-color: rgba(198, 208, 235, 0.1);
+    border: 1px solid rgba(198, 208, 235, 0.1);
+    color: rgba(0, 0, 0, 0.75);
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+    }
+
+    &:focus {
+        background-color: rgba(198, 208, 235, 0.2);
+        border: 1px solid rgba(198, 208, 235, 0.2);
+    }
+}
+
+.light-link {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-link {
+    color: rgba(0, 0, 0, 0.3);
 }
 </style>
