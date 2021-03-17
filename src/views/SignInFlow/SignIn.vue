@@ -6,6 +6,7 @@
             'dark-background': isDarkMode,
         }"
     >
+        <Notification v-if="hasText" :text="text"/>
         <RequestAccount />
         <div class="login">
             <img src="@/assets/DCHQ.svg" v-show="isDarkMode" alt="Logo DCHQ" />
@@ -17,27 +18,29 @@
             <h4 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
                 Sign into Design+Code HQ
             </h4>
-            <input
-                :class="{
-                    'light-field': isDarkMode,
-                    'dark-field': !isDarkMode,
-                }"
-                type="email"
-                placeholder="Email"
-                name="email"
-                id="email"
-            />
-            <input
-                :class="{
-                    'light-field': isDarkMode,
-                    'dark-field': !isDarkMode,
-                }"
-                type="password"
-                placeholder="Password"
-                name="password"
-                id="password"
-            />
-            <button>Sign In</button>
+            <form @submit.prevent="onSubmit">
+                <input
+                    :class="{
+                        'light-field': isDarkMode,
+                        'dark-field': !isDarkMode,
+                    }"
+                    type="email"
+                    placeholder="Email"
+                    v-model="email"
+                    requierd
+                />
+                <input
+                    :class="{
+                        'light-field': isDarkMode,
+                        'dark-field': !isDarkMode,
+                    }"
+                    type="password"
+                    placeholder="Password"
+                    v-model="password"
+                    requierd
+                />
+                <button>Sign In</button>
+            </form>
             <router-link
                 to="/recover"
                 :class="{ 'light-link': isDarkMode, 'dark-link': !isDarkMode }"
@@ -51,12 +54,23 @@
 <script>
 import RequestAccount from "@/components/RequestAccount";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import Notification from "@/components/Notification";
+import { auth } from "@/main";
 
 export default {
     name: "SignIn",
     components: {
         RequestAccount,
         ThemeSwitch,
+        Notification,
+    },
+    data() {
+        return {
+            email: null,
+            password: null,
+            hasText: false,
+            text: "",
+        }
     },
     computed: {
         isDarkMode() {
@@ -67,6 +81,24 @@ export default {
         toggleDarkMode() {
             this.$store.commit("toggleDarkMode");
         },
+        onSubmit() {
+            const email = this.email;
+            const password = this.password;
+
+            auth.login(email, password, true).then( () => {
+                this.$router.replace("/");
+            }).catch( error => {
+                alert("Error: " + error);
+            });
+        },
+    },
+    mounted() {
+        const params = this.$route.params;
+
+        if(params.userLoggedOut) {
+            this.hasText = true;
+            this.text = "You have logged out!";
+        }
     },
 };
 </script>
@@ -93,15 +125,15 @@ export default {
     }
 
     @media only screen and (max-width: 768px) {
-            margin-top: 70px;
+        margin-top: 70px;
 
-            img {
-                width: 120px;
-            }
+        img {
+            width: 120px;
+        }
 
-            button {
-                margin-bottom: 30px;
-            }
+        button {
+            margin-bottom: 30px;
+        }
     }
 }
 </style>
