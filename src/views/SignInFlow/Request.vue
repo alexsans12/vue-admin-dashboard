@@ -70,11 +70,9 @@ export default {
             };
 
             const formData = new FormData();
-            formData.append('token', 'xoxb-1894260863232-1855711504215-O0ic6tytFxBbPZfkEKnHlWpF');
+            formData.append('token', 'xoxb-1894260863232-1855711504215-aa4XMnu4a8bRLSr6rg9OBQYQ');
 
             slackURL.search = new URLSearchParams(data);
-
-            console.log(FormData);
 
             fetch(slackURL, { 
                 body: formData,

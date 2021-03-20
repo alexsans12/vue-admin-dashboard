@@ -1,5 +1,11 @@
 <template>
-    <div id="app">
+    <div
+        id="app"
+        :class="{
+            'light-background': !isDarkMode,
+            'dark-background': isDarkMode,
+        }"
+    >
         <router-view />
     </div>
 </template>
@@ -8,20 +14,36 @@
 import "animate.css";
 
 export default {
-    name: 'App',
+    name: "App",
+    computed: {
+        isDarkMode() {
+            return this.$store.getters.isDarkMode;
+        },
+    },
     mounted() {
         const isDarkMode = this.$store.getters.isDarkMode;
-        document.body.style.background = isDarkMode ? '#212C4F' : '#F0F3F5';
-    } 
+        document.body.style.background = isDarkMode ? "#212C4F" : "#F0F3F5";
+    },
 };
 </script>
 
 <style lang="scss">
+html {
+    box-sizing: border-box;
+}
+
 * {
     transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
+    margin: 0;
     background-color: $dark-blue;
 }
 
@@ -33,24 +55,16 @@ p {
     @include large-text-bold($purple);
 }
 
+line,
+text {
+    opacity: 0.2;
+}
+
 #app {
     font-family: $system-font-family;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: $white;
-}
-
-#nav {
-    padding: 30px;
-
-    a {
-        font-weight: bold;
-        color: $white;
-
-        &.router-link-exact-active {
-            color: #42b983;
-        }
-    }
 }
 
 h4 {
@@ -99,6 +113,11 @@ a {
 /* THEME */
 .light-background {
     background-color: $light-gray;
+
+    line,
+    text {
+        stroke: $black;
+    }
 }
 
 .light-text {
@@ -122,6 +141,11 @@ a {
 
 .dark-background {
     background-color: $dark-blue;
+
+    line,
+    text {
+        stroke: $light-gray;
+    }
 }
 
 .dark-text {
@@ -149,5 +173,15 @@ a {
 
 .dark-link {
     color: rgba(0, 0, 0, 0.3);
+}
+
+.light-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-box {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>
