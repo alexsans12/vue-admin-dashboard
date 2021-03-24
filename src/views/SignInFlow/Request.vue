@@ -70,7 +70,10 @@ export default {
             };
 
             const formData = new FormData();
-            formData.append('token', process.env.API_SLACK);
+            const { API_SLACK } = process.env;
+            formData.append('token', API_SLACK);
+
+            console.log(API_SLACK);
 
             slackURL.search = new URLSearchParams(data);
 
