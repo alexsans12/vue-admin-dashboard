@@ -4,7 +4,7 @@ zipFunctions("./netlify/functions", "functions-dist")
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require(process.env.serviceAccountKey);
+var serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
