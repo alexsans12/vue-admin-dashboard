@@ -3,6 +3,7 @@ node_modules
 /dist
 .idea
 serviceAccountKey.json
+netlify.toml
 
 # local env files
 .env.local
