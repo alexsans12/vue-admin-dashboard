@@ -70,7 +70,7 @@ export default {
             };
 
             const formData = new FormData();
-            formData.append('token', 'xoxb-1894260863232-1855711504215-aa4XMnu4a8bRLSr6rg9OBQYQ');
+            formData.append('token', process.env.API_SLACK);
 
             slackURL.search = new URLSearchParams(data);
 

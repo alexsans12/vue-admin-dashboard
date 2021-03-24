@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+.idea
+serviceAccountKey.json
 
 # local env files
 .env.local

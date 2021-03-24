@@ -2,14 +2,14 @@ import { firebase } from "@firebase/app";
 import "@firebase/firestore";
 
 const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyB7dNGuTPmkQCEHH4nhV5PRJqNoceb4L08",
-    authDomain: "vue-hq-dashboard.firebaseapp.com",
-    databaseURL: "https://vue-hq-dashboard-default-rtdb.firebaseio.com",
-    projectId: "vue-hq-dashboard",
-    storageBucket: "vue-hq-dashboard.appspot.com",
-    messagingSenderId: "686736424173",
-    appId: "1:686736424173:web:0749bde8d48ff1266e60e4",
-    measurementId: "G-FNV8Q5VHYP"
+    apiKey: "AIzaSyD82Jlncz2N69XRc8AzOWxj-mwArnZ5LQY",
+    authDomain: "vue-hq-dashboard-4f91b.firebaseapp.com",
+    databaseURL: "https://vue-hq-dashboard-4f91b-default-rtdb.firebaseio.com",
+    projectId: "vue-hq-dashboard-4f91b",
+    storageBucket: "vue-hq-dashboard-4f91b.appspot.com",
+    messagingSenderId: "475461578336",
+    appId: "1:475461578336:web:637e3b7334c942fe8a1d05",
+    measurementId: "G-MZD4PZX6CQ"
 });
 
 export const db = firebaseApp.firestore();

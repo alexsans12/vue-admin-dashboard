@@ -85,7 +85,7 @@ export default {
                 // Bind the collection as an object if you would like to.
                 objects: true,
                 resolve: (traffic) => {
-                    const todaysDate = new Date("Febraury 11, 2021");
+                    const todaysDate = new Date();
                     const lastWeekDate = todaysDate.setDate(
                         todaysDate.getDate() - 7
                     );
@@ -186,7 +186,7 @@ export default {
                 db.collection("traffic").doc("activeUsers")
             )
                 .then((data) => {
-                    const todaysDate = new Date("Febraury 11, 2021");
+                    const todaysDate = new Date();
                     const lastWeekDate = todaysDate.setDate(
                         todaysDate.getDate() - 7
                     );
@@ -209,7 +209,7 @@ export default {
             // New Users
             this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
                 .then((data) => {
-                    const todaysDate = new Date("Febraury 11, 2021");
+                    const todaysDate = new Date();
                     const lastWeekDate = todaysDate.setDate(
                         todaysDate.getDate() - 7
                     );
@@ -252,7 +252,7 @@ export default {
                 db.collection("traffic").doc("activeUsers")
             )
                 .then((data) => {
-                    const todaysDate = new Date("Febraury 11, 2021");
+                    const todaysDate = new Date();
                     const lastMonthDate = todaysDate.setDate(
                         todaysDate.getDate() - 30
                     );
@@ -275,7 +275,7 @@ export default {
             // New Users
             this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
                 .then((data) => {
-                    const todaysDate = new Date("Febraury 11, 2021");
+                    const todaysDate = new Date();
                     const lastMonthDate = todaysDate.setDate(
                         todaysDate.getDate() - 30
                     );
