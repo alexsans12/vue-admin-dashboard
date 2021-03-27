@@ -2,7 +2,10 @@
     <div class="team">
         <Header />
         <div class="container">
-            <h2>Team</h2>
+            <h2 :class="{
+                    light: isDarkMode,
+                    dark: !isDarkMode,
+                }">Team</h2>
             <div class="cards">
                 <transition appear appear-active-class="animated flipInX">
                     <a
@@ -224,23 +227,49 @@ p {
 }
 
 .container {
-    width: 95%;
-    margin: 0 auto;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    @media screen and (max-width: 767px) {
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.dark {
+    @include heading-2(rgba(0, 0, 0, 0.75));
+}
+
+.light {
+    @include heading-2($white);
 }
 
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: space-evenly;
 }
 
 .card {
     width: 100%;
-    max-width: 300px;
-    height: 400px;
+    max-width: 275px;
+    height: 375px;
     border-radius: 10px;
-    margin: 20px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+        box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .card-1 {
@@ -278,19 +307,9 @@ p {
 
 .light-card {
     background: $white;
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
-
-    &:hover {
-        box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.35);
-    }
 }
 
 .dark-card {
     background: $super-dark-blue;
-    box-shadow: 0px 20px 40px rgba(255, 255, 255, 0.15);
-
-    &:hover {
-        box-shadow: 0px 30px 60px rgba(255, 255, 255, 0.35);
-    }
 }
 </style>
